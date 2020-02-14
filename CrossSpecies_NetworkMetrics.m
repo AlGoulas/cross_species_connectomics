@@ -1,12 +1,100 @@
-
-%what_to_do:    string indicating the following options:
-%               'existence':
-%               'core-periphery':
-%               'connectome-cyto-geo-ap':
+%Perform cross-species, cross-levels analysis of multiple species
 %
+%The script performs a bulk of tasks (see option what_to_do)
+%
+%Input:
+%
+%Species:   Struct containing the date from different species to be
+%           analyzed. 
+%
+%           The struct must have the following fields:
+%
+%           C: an NxN matrix of positive integers or floats representing 
+%           the connectome of the species
+%           
+%           Cortical Type: An Nx1 matrix of integers or floats denoting the
+%                          a property of each area. For instance, it could 
+%                          be neuronal density.
+%
+%           Delta:  an NxN matrix coding for the cortical type differences
+%                   of areas. This is the N(i)-N(j) area-to-area matrix 
+%                   of differences.
+%
+%           Dist:   an NxN matrix of spacial distances between areas.
+%
+%           Primary:An Nx1 matrix denoting the primary areas in a species.
+%                   1=Primary 0=Non-primary
+%                   
+%           Names: a Nx1 cell with strings denotign the name of each area.
+%
+%           name: a string denoting the name of each species
+%
+%           AP: a Nx1 matrix with the anterior-posterior coordinate of each
+%           area.
+%
+%           DV: a Nx1 matrix with the dorsal-ventral coordinate of each
+%           area.
+%
+%           LM: a Nx1 matrix with lateral-medial coordinate of each
+%           area.
+%
+%indexes:   vector of positive integers denoting which entries of the 
+%           struct Species will be analyzed.
+%
+%weighted:  0 or 1 integer denoting that connectomes should be analyzed 
+%           as weighted (=1) or binary (=0). Note that for the 
+%           core-periphery estimation and existence analyses, 
+%           the connectomes are treated as binary. Thus, the weighted 
+%           option affects the estimation of the network metrics.     
+%
+%permutations: an integer denoting the number of permutations to be
+%              executed for the assessment of the statistical significance
+%              of the examiend association 
+%
+%what_to_do:    string indicating the following options:
+%               'existence': examine the relation of existence of
+%                            connections, with distance and
+%                            cytoarchitecture
+%               'core-periphery': perform a core-periphery decomposition of
+%                                 the connectomes and associate this
+%                                 division to network topology properties
+%                                 and other cross-levels analysis, e.g, 
+%                                 differences of core-periphery in terms
+%                                 of cytology
+%               'connectome-cyto-geo-ap': estimate network topology
+%                                         metrics and associate them to the 
+%                                         cytology, geometric centrality 
+%                                         and anterior-posterior axis
 %compare_distributions: string indicating the following options:
 %                       'ks': 2D Kolmogorov-Smirnov test
 %                       'statistical-energy': 2D statistical energy test
+%
+%
+%Output:
+%
+%Stats: A struct with statistical information related with the analysis:
+%       The fields vary based on the option what_to_do.
+%       
+%       For 'existence':
+%       
+%       stat_logistic_regr: a struct from a logistic regression 
+%                           (see glmfit.m)
+%
+%       stat_delta: statistical metric denoting the difference of the
+%                   differences coded by Delta (e.g. neuronal density). 
+%                   Metric is the Kolmogorov-Smirnov test 
+%                   (compare_distributions='ks') or the statistical energy 
+%                   (compare_distributions='statistical-energy')
+%       stat_dist:  as above but for the spatial distances in Dist.
+%       
+%       pval_delta: The respective p-value for stat_delta.
+%
+%       pval_dist: The respective p-value for stat_dist.
+%
+%       For 'core-periphery':
+%
+%
+%--------------------------------------------------------------------------
 
 function [Stats, Plotting]=CrossSpecies_NetworkMetrics(Species, indexes, weighted, permutations, what_to_do, compare_distributions)
 
