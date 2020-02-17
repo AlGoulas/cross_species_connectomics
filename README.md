@@ -13,6 +13,8 @@ https://sites.google.com/site/bctnet/
 
 Add the folder with all the subfolders to your MATLAB path. Load the data in you workspace and run the main function (CrossSpecies_NetworkMetrics.m).
 
+# Example
+
 For examining all 7 species/datasets, run the following command:
 
 species_index=[1:7];
