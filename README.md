@@ -19,13 +19,16 @@ Add the folder with all the subfolders to your MATLAB path. Load the data in you
 
 For examining all 7 species/datasets, run the following command:
 
+```
 species_index=[1:7];
 [Stats, Plotting]=CrossSpecies_NetworkMetrics(Species, species_index, 1, 100, 'core-periphery', 'ks');
-
+```matlab
+ 
 If only dataset e.g., 3 and 5 needs o be analyzed run:
 
+```matlab
 [Stats, Plotting]=CrossSpecies_NetworkMetrics(Species, [3 5], 1, 100, 'core-periphery', 'ks');
-
+```
 See description of CrossSpecies_NetworkMetrics.m for a complete description of the inputs and the outputs.
 
 # Citations
