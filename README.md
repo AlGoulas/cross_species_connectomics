@@ -1,4 +1,4 @@
-# cross-species-connectomics
+# Cross-species, corss-scales connectomics
 Perform cross-species and cross-scales analysis of mammalian brain connectomes
 
 # Description
