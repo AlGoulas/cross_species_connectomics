@@ -1,7 +1,7 @@
 # Cross-species, cross-scales connectomics
 Perform cross-species and cross-scales analysis of mammalian brain connectomes
 
-![Cross-species, cross-scales connectomics](git_fig.png)
+![Cross-species, cross-scales connectomics](species_connectomes_fig.png)
 
 # Description
 The repository hosts the functions for the analysis (network metrics, statistics) (aux), the data (brain connectomes, cytological data for braina areas, spatial distances between areas and certain meta-data, e.g., species name) (data) and the main function to perform the analysis (main).
