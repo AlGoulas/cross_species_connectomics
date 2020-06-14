@@ -21,7 +21,7 @@
 %                   of areas. This is the N(i)-N(j) area-to-area matrix 
 %                   of differences.
 %
-%           Dist:   an NxN matrix of spacial distances between areas.
+%           Dist:   an NxN matrix of spatial distances between areas.
 %
 %           Primary:An Nx1 matrix denoting the primary areas in a species.
 %                   1=Primary 0=Non-primary
