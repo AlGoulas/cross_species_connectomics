@@ -1,5 +1,4 @@
-# Cross-species, cross-scales connectomics
-Perform cross-species and cross-scales analysis of mammalian brain connectomes
+# Uncover and predict network properties of the brain of different animals 
 
 ![Cross-species, cross-scales connectomics](species_connectomes_fig.png)
 
